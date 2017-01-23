@@ -2,25 +2,27 @@ import csv
 import pandas as pd
 from bokeh.charts import Bar, output_file, save
 
-df = pd.read_csv('Pokemon.csv')
+df = pd.read_csv('PokemonGO1.csv')
 
-types = [df['Type 1']]
+Type_1 = df['Type 1']
 
-def remove_duplicates(values):
-    output = []
-    seen = set()
-    for value in values:
-        # If value has not been encountered yet,
-        # ... add it to both list and set.
-        if value not in seen:
-            output.append(value)
-            seen.add(value)
-    return output
+types = list(set(Type_1))
 
-types1 = remove_duplicates(df['Type 1'])
+t1 = sorted(types, key=str.lower)
 
-Bar1 = Bar(df, label=types1, values='Type 1', title='Frequency of Type 1 Pokemon')
+freq = [0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-output_file('Type1_Barchart.html')
+x = 0
 
-save(Bar1)
+while x <= 3:
+    y = 0
+    while y <= 14:
+        if str(Type_1[x]) == str(t1[y]):
+            freq[y] +=1
+        else:
+            y+=1
+        
+    x+=1
+
+
+print(freq)
