@@ -2,7 +2,7 @@ import csv
 import pandas as pd
 from bokeh.charts import Bar, output_file, save
 
-df = pd.read_csv('pokemon.csv')
+df = pd.read_csv('../pokemon.csv')
 
 Type_1 = df['Type 1']
 
